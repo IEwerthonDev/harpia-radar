@@ -1,0 +1,15 @@
+{
+  "sha": "346c14d5b7e59ab9aab92e7a77c499a19d462fba",
+  "commit": {
+    "author": {
+      "email": "redacted@users.example",
+      "date": "2026-10-02T12:40:30Z"
+    },
+    "committer": {
+      "date": "2026-10-02T12:40:30Z"
+    }
+  },
+  "author": {
+    "login": "redacted"
+  }
+}

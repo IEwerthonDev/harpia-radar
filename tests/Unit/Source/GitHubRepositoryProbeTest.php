@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use HarpiaRadar\Catalog\RepoRef;
 use HarpiaRadar\Config\GitHubToken;
+use HarpiaRadar\Source\GitHubApi;
 use HarpiaRadar\Source\GitHubRepositoryProbe;
 use HarpiaRadar\Source\RepositoryNotAccessible;
 use Symfony\Component\HttpClient\MockHttpClient;
@@ -13,7 +14,7 @@ function probeWith(MockResponse $response, ?MockHttpClient &$client = null): Git
 {
     $client = new MockHttpClient($response);
 
-    return new GitHubRepositoryProbe($client, GitHubToken::fromEnvironment('test-token'));
+    return new GitHubRepositoryProbe(new GitHubApi($client, GitHubToken::fromEnvironment('test-token')));
 }
 
 function probeMessage(MockResponse $response): string

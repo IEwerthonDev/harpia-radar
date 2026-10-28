@@ -1,0 +1,30 @@
+[
+  {
+    "sha": "27ae1e716b7d6d38907f83a7f1c27ff52c8490b0",
+    "commit": {
+      "author": {
+        "email": "redacted@users.example",
+        "date": "2026-08-18T12:07:09Z"
+      },
+      "committer": {
+        "date": "2026-08-18T12:07:09Z"
+      }
+    },
+    "author": {
+      "login": "author-8"
+    }
+  },
+  {
+    "sha": "35de8e7617062f600646e5027fc72bdb32ad31ef",
+    "commit": {
+      "author": {
+        "email": "author-9@users.example",
+        "date": "2026-08-18T02:26:53Z"
+      },
+      "committer": {
+        "date": "2026-08-18T02:26:53Z"
+      }
+    },
+    "author": null
+  }
+]

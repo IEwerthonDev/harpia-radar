@@ -1,0 +1,178 @@
+{
+    "generated_at": "2026-10-28T22:50:22Z",
+    "schema_version": 1,
+    "window_days": 90,
+    "projects": [
+        {
+            "id": "sped-nfe",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-10-27",
+                "last_release_at": "2026-10-02",
+                "commits_90d": 31,
+                "authors_90d": 7,
+                "top_author_share": 0.5484,
+                "bus_factor": 1,
+                "archived": false,
+                "license": "NOASSERTION",
+                "open_issues": 12
+            },
+            "health": {
+                "activity": "active",
+                "sustainability": "needs_hands"
+            }
+        },
+        {
+            "id": "sped-da",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-10-26",
+                "last_release_at": "2024-05-07",
+                "commits_90d": 22,
+                "authors_90d": 7,
+                "top_author_share": 0.3636,
+                "bus_factor": 2,
+                "archived": false,
+                "license": "NOASSERTION",
+                "open_issues": 64
+            },
+            "health": {
+                "activity": "active_no_recent_release",
+                "sustainability": "few_people"
+            }
+        },
+        {
+            "id": "sped-cte",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-09-11",
+                "last_release_at": "2025-06-18",
+                "commits_90d": 8,
+                "authors_90d": 4,
+                "top_author_share": 0.625,
+                "bus_factor": 1,
+                "archived": false,
+                "license": "NOASSERTION",
+                "open_issues": 18
+            },
+            "health": {
+                "activity": "active_no_recent_release",
+                "sustainability": "insufficient_data"
+            }
+        },
+        {
+            "id": "sped-mdfe",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-09-11",
+                "last_release_at": "2025-05-08",
+                "commits_90d": 3,
+                "authors_90d": 2,
+                "top_author_share": 0.6667,
+                "bus_factor": 1,
+                "archived": false,
+                "license": "NOASSERTION",
+                "open_issues": 8
+            },
+            "health": {
+                "activity": "active_no_recent_release",
+                "sustainability": "insufficient_data"
+            }
+        },
+        {
+            "id": "nfse-php",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-10-28",
+                "last_release_at": "2026-08-26",
+                "commits_90d": 6,
+                "authors_90d": 5,
+                "top_author_share": 0.3333,
+                "bus_factor": 2,
+                "archived": false,
+                "license": "MIT",
+                "open_issues": 12
+            },
+            "health": {
+                "activity": "active",
+                "sustainability": "insufficient_data"
+            }
+        },
+        {
+            "id": "laravel-boleto",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-06-08",
+                "last_release_at": "2026-04-29",
+                "commits_90d": 0,
+                "authors_90d": 0,
+                "top_author_share": null,
+                "bus_factor": null,
+                "archived": false,
+                "license": "MIT",
+                "open_issues": 20
+            },
+            "health": {
+                "activity": "no_recent_changes",
+                "sustainability": "insufficient_data"
+            }
+        },
+        {
+            "id": "openboleto",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-02-13",
+                "last_release_at": "2025-03-14",
+                "commits_90d": 0,
+                "authors_90d": 0,
+                "top_author_share": null,
+                "bus_factor": null,
+                "archived": false,
+                "license": null,
+                "open_issues": 38
+            },
+            "health": {
+                "activity": "no_recent_changes",
+                "sustainability": "insufficient_data"
+            }
+        },
+        {
+            "id": "php-pix",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2024-05-19",
+                "last_release_at": "2024-05-19",
+                "commits_90d": 0,
+                "authors_90d": 0,
+                "top_author_share": null,
+                "bus_factor": null,
+                "archived": false,
+                "license": "MIT",
+                "open_issues": 4
+            },
+            "health": {
+                "activity": "no_recent_changes",
+                "sustainability": "insufficient_data"
+            }
+        },
+        {
+            "id": "php-qrcode-pix",
+            "status": "ok",
+            "metrics": {
+                "last_commit_at": "2026-08-18",
+                "last_release_at": null,
+                "commits_90d": 2,
+                "authors_90d": 2,
+                "top_author_share": 0.5,
+                "bus_factor": 1,
+                "archived": false,
+                "license": "CC0-1.0",
+                "open_issues": 13
+            },
+            "health": {
+                "activity": "active_no_recent_release",
+                "sustainability": "insufficient_data"
+            }
+        }
+    ]
+}

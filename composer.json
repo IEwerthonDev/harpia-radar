@@ -20,10 +20,13 @@
             "HarpiaRadar\\Tests\\": "tests/"
         }
     },
-    "bin": ["bin/radar"],
+    "bin": [
+        "bin/radar"
+    ],
     "scripts": {
         "test": "pest",
-        "stan": "phpstan analyse --memory-limit=512M --no-progress"
+        "stan": "phpstan analyse --memory-limit=512M --no-progress",
+        "coverage": "pest --coverage --min=80"
     },
     "config": {
         "sort-packages": true,

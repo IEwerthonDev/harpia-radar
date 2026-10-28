@@ -8,6 +8,7 @@ use HarpiaRadar\Catalog\CatalogLoader;
 use HarpiaRadar\Catalog\InvalidCatalog;
 use HarpiaRadar\Config\GitHubToken;
 use HarpiaRadar\Config\MissingGitHubToken;
+use HarpiaRadar\Source\GitHubApi;
 use HarpiaRadar\Source\GitHubRepositoryProbe;
 use HarpiaRadar\Source\RepositoryNotAccessible;
 use HarpiaRadar\Validation\ValidationError;
@@ -59,7 +60,7 @@ final class ValidateCommand extends Command
         }
 
         $io->text('Conferindo se os repositórios estão acessíveis…');
-        $probe = new GitHubRepositoryProbe($this->httpClient, $token);
+        $probe = new GitHubRepositoryProbe(new GitHubApi($this->httpClient, $token));
         $errors = [];
         foreach ($catalog->projects as $project) {
             try {

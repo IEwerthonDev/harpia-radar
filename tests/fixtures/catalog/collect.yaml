@@ -1,0 +1,24 @@
+categories:
+  - id: fiscal
+    name: Fiscal e notas
+  - id: payments
+    name: Pagamentos, boleto e Pix
+
+projects:
+  - id: sped-nfe
+    name: sped-nfe
+    repo: github:nfephp-org/sped-nfe
+    category: fiscal
+    description: Emissão de NF-e e NFC-e.
+
+  - id: gone
+    name: gone
+    repo: github:harpia-test/gone
+    category: fiscal
+    description: Repositório que não existe mais.
+
+  - id: php-qrcode-pix
+    name: php-qrcode-pix
+    repo: github:renatomb/php_qrcode_pix
+    category: payments
+    description: Geração de QR Code do Pix.
