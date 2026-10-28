@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: pcov
+
+      - name: Instalar dependências
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Testes e cobertura
+        run: composer coverage
+
+      - name: Análise estática
+        run: composer stan
+
+  accessibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      - name: Instalar dependências
+        run: composer install --no-dev --no-interaction --no-progress --prefer-dist
+
+      - name: Gerar a página com o snapshot do repositório
+        run: bin/radar build
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Checar acessibilidade (WCAG 2.2 AA)
+        run: |
+          php -S localhost:8080 -t public > /dev/null 2>&1 &
+          npx --yes pa11y-ci@4 --config .pa11yci.json

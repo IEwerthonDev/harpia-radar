@@ -1,0 +1,102 @@
+name: Radar diário
+
+on:
+  schedule:
+    # Todo dia às 05:23 UTC (02:23 em Brasília). Minuto quebrado para fugir do pico do Actions.
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - projects.yaml
+      - config/**
+      - templates/**
+      - src/**
+      - .github/workflows/radar.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  collect-and-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+      CODEBERG_REPOSITORY: ${{ vars.CODEBERG_REPOSITORY }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      - name: Instalar dependências
+        run: composer install --no-dev --no-interaction --no-progress --prefer-dist
+
+      # Se a coleta falhar por completo, o comando sai com erro, nada é publicado
+      # e a página anterior continua no ar (RF-06).
+      - name: Coletar dados
+        run: bin/radar collect
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fazer commit do snapshot
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/snapshot.json
+          if git diff --cached --quiet; then
+            echo 'Snapshot sem mudanças.'
+          else
+            git commit -m "chore(data): snapshot $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Gerar a página
+        run: bin/radar build
+        env:
+          RADAR_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Checar acessibilidade (WCAG 2.2 AA)
+        run: |
+          php -S localhost:8080 -t public > /dev/null 2>&1 &
+          npx --yes pa11y-ci@4 --config .pa11yci.json
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+      - name: Espelhar no Codeberg Pages
+        if: env.CODEBERG_TOKEN != '' && env.CODEBERG_REPOSITORY != ''
+        working-directory: public
+        run: |
+          git init -q -b pages
+          git config user.name 'harpia-radar'
+          git config user.email 'harpia-radar@users.noreply.codeberg.org'
+          git add -A
+          git commit -q -m "Publicação de $(date -u +%Y-%m-%d)"
+          git push -q --force "https://${CODEBERG_REPOSITORY%%/*}:${CODEBERG_TOKEN}@codeberg.org/${CODEBERG_REPOSITORY}.git" pages
+
+  deploy:
+    needs: collect-and-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
