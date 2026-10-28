@@ -1,0 +1,61 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://iewerthondev.github.io/harpia-radar/schema/projects.schema.json",
+    "title": "Harpia Radar: lista curada de projetos",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["categories", "projects"],
+    "properties": {
+        "categories": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/category" }
+        },
+        "projects": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/project" }
+        }
+    },
+    "$defs": {
+        "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "text": {
+            "type": "string",
+            "minLength": 1
+        },
+        "category": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name"],
+            "properties": {
+                "id": { "$ref": "#/$defs/id" },
+                "name": { "$ref": "#/$defs/text" }
+            }
+        },
+        "project": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "repo", "category", "description"],
+            "properties": {
+                "id": { "$ref": "#/$defs/id" },
+                "name": { "$ref": "#/$defs/text" },
+                "repo": {
+                    "type": "string",
+                    "pattern": "^github:[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9._-]+$"
+                },
+                "category": { "$ref": "#/$defs/id" },
+                "description": { "$ref": "#/$defs/text" },
+                "language": { "$ref": "#/$defs/text" },
+                "replaces": { "$ref": "#/$defs/text" },
+                "tags": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/$defs/text" }
+                }
+            }
+        }
+    }
+}

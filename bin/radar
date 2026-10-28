@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use HarpiaRadar\Catalog\CatalogLoader;
+use HarpiaRadar\Console\ValidateCommand;
+use Symfony\Component\Console\Application;
+use Symfony\Component\HttpClient\HttpClient;
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+$root = dirname(__DIR__);
+$token = getenv('GITHUB_TOKEN');
+
+$application = new Application('Harpia Radar', '0.1.0');
+$application->addCommand(new ValidateCommand(
+    new CatalogLoader($root . '/schema/projects.schema.json'),
+    HttpClient::create(),
+    $token === false ? null : $token,
+));
+$application->run();

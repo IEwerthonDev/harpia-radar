@@ -1,0 +1,48 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://iewerthondev.github.io/harpia-radar/schema/health.schema.json",
+    "title": "Harpia Radar: limiares dos selos",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["window_days", "activity", "sustainability", "bots"],
+    "properties": {
+        "window_days": { "type": "integer", "minimum": 1 },
+        "activity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["release_max_age_months"],
+            "properties": {
+                "release_max_age_months": { "type": "integer", "minimum": 1 }
+            }
+        },
+        "sustainability": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "min_commits",
+                "well_distributed_bus_factor",
+                "few_people_bus_factor",
+                "max_top_author_share"
+            ],
+            "properties": {
+                "min_commits": { "type": "integer", "minimum": 1 },
+                "well_distributed_bus_factor": { "type": "integer", "minimum": 2 },
+                "few_people_bus_factor": { "type": "integer", "minimum": 2 },
+                "max_top_author_share": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 }
+            }
+        },
+        "bots": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["suffix", "logins"],
+            "properties": {
+                "suffix": { "type": "string", "minLength": 1 },
+                "logins": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": { "type": "string", "minLength": 1 }
+                }
+            }
+        }
+    }
+}

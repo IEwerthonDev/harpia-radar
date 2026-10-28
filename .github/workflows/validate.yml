@@ -1,0 +1,30 @@
+name: Validar lista de projetos
+
+on:
+  pull_request:
+    paths:
+      - projects.yaml
+      - schema/projects.schema.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      - name: Instalar dependências
+        run: composer install --no-dev --no-interaction --no-progress --prefer-dist
+
+      - name: Validar projects.yaml
+        run: bin/radar validate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

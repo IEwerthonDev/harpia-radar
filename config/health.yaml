@@ -1,0 +1,27 @@
+# Limiares dos selos do Harpia Radar. Mudanças aqui são discutidas via PR.
+# Schema: schema/health.schema.json
+
+# Janela de análise, em dias.
+window_days: 90
+
+activity:
+  # "Ativo" exige release nos últimos N meses; senão, "Ativo, sem release recente".
+  release_max_age_months: 12
+
+sustainability:
+  # Abaixo deste número de commits na janela: "Poucos dados na janela".
+  min_commits: 10
+  # bus_factor a partir deste valor: "Bem distribuído".
+  well_distributed_bus_factor: 3
+  # bus_factor igual a este valor: "Poucas pessoas".
+  few_people_bus_factor: 2
+  # Fatia do autor principal acima deste valor: "Precisa de mãos".
+  max_top_author_share: 0.75
+
+bots:
+  # Logins terminados com este sufixo são bots.
+  suffix: "[bot]"
+  # Outros logins tratados como bots.
+  logins:
+    - dependabot
+    - renovate

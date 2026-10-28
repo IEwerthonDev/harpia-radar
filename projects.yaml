@@ -1,0 +1,85 @@
+# Lista curada do Harpia Radar. Para sugerir um projeto, abra um PR editando este arquivo.
+# Obrigatórios: id (único, kebab-case), name, repo, category, description.
+# Schema: schema/projects.schema.json
+
+categories:
+  - id: fiscal
+    name: Fiscal e notas
+  - id: payments
+    name: Pagamentos, boleto e Pix
+  - id: documents-pdf
+    name: Documentos e PDF
+  - id: digital-signature
+    name: Assinatura digital
+  - id: transparency
+    name: Transparência
+  - id: infrastructure
+    name: Infraestrutura
+
+projects:
+  - id: sped-nfe
+    name: sped-nfe
+    repo: github:nfephp-org/sped-nfe
+    category: fiscal
+    description: Emissão de NF-e e NFC-e, já com IBS/CBS da reforma tributária.
+    language: PHP
+    replaces: Emissores fiscais pagos
+    tags: [nf-e, nfc-e, reforma-tributaria]
+
+  - id: sped-da
+    name: sped-da
+    repo: github:nfephp-org/sped-da
+    category: fiscal
+    description: Geração dos documentos auxiliares do Sped, como o DANFE.
+    language: PHP
+
+  - id: sped-cte
+    name: sped-cte
+    repo: github:nfephp-org/sped-cte
+    category: fiscal
+    description: Geração e envio de CT-e às SEFAZ autorizadoras.
+    language: PHP
+
+  - id: sped-mdfe
+    name: sped-mdfe
+    repo: github:nfephp-org/sped-mdfe
+    category: fiscal
+    description: Geração e envio de MDF-e às SEFAZ autorizadoras.
+    language: PHP
+
+  - id: nfse-php
+    name: nfse-php
+    repo: github:nfse-nacional/nfse-php
+    category: fiscal
+    description: SDK em PHP para a NFS-e Nacional.
+    language: PHP
+
+  - id: laravel-boleto
+    name: laravel-boleto
+    repo: github:eduardokum/laravel-boleto
+    category: payments
+    description: Geração de boletos e arquivos CNAB.
+    language: PHP
+    replaces: Gateways de cobrança pagos
+    tags: [boleto, cnab]
+
+  - id: openboleto
+    name: openboleto
+    repo: github:openboleto/openboleto
+    category: payments
+    description: Geração de boletos bancários.
+    language: PHP
+
+  - id: php-pix
+    name: php-pix
+    repo: github:piggly-dev/php-pix
+    category: payments
+    description: Preparação e geração do código Pix do Banco Central.
+    language: PHP
+
+  - id: php-qrcode-pix
+    name: php-qrcode-pix
+    repo: github:renatomb/php_qrcode_pix
+    category: payments
+    description: Geração de QR Code do Pix.
+    language: PHP

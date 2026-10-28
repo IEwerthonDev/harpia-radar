@@ -1,0 +1,90 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://iewerthondev.github.io/harpia-radar/schema/snapshot.schema.json",
+    "title": "Harpia Radar: snapshot da coleta",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["generated_at", "schema_version", "window_days", "projects"],
+    "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "schema_version": { "const": 1 },
+        "window_days": { "type": "integer", "minimum": 1 },
+        "projects": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/project" }
+        }
+    },
+    "$defs": {
+        "date": {
+            "type": "string",
+            "format": "date"
+        },
+        "project": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "status"],
+            "properties": {
+                "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+                "status": { "enum": ["ok", "error"] },
+                "error": { "type": "string", "minLength": 1 },
+                "metrics": { "type": ["object", "null"] },
+                "health": { "type": ["object", "null"] }
+            },
+            "if": { "properties": { "status": { "const": "ok" } } },
+            "then": {
+                "required": ["metrics", "health"],
+                "properties": {
+                    "metrics": { "$ref": "#/$defs/metrics" },
+                    "health": { "$ref": "#/$defs/health" }
+                },
+                "not": { "required": ["error"] }
+            },
+            "else": {
+                "required": ["error", "metrics", "health"],
+                "properties": {
+                    "metrics": { "type": "null" },
+                    "health": { "type": "null" }
+                }
+            }
+        },
+        "metrics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "last_commit_at",
+                "last_release_at",
+                "commits_90d",
+                "authors_90d",
+                "top_author_share",
+                "bus_factor",
+                "archived",
+                "license",
+                "open_issues"
+            ],
+            "properties": {
+                "last_commit_at": { "$ref": "#/$defs/date" },
+                "last_release_at": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+                "commits_90d": { "type": "integer", "minimum": 0 },
+                "authors_90d": { "type": "integer", "minimum": 0 },
+                "top_author_share": { "oneOf": [{ "type": "number", "minimum": 0, "maximum": 1 }, { "type": "null" }] },
+                "bus_factor": { "oneOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }] },
+                "archived": { "type": "boolean" },
+                "license": { "type": ["string", "null"] },
+                "open_issues": { "type": "integer", "minimum": 0 }
+            }
+        },
+        "health": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["activity", "sustainability"],
+            "properties": {
+                "activity": {
+                    "enum": ["active", "active_no_recent_release", "no_recent_changes", "archived"]
+                },
+                "sustainability": {
+                    "enum": ["well_distributed", "few_people", "needs_hands", "insufficient_data"]
+                }
+            }
+        }
+    }
+}

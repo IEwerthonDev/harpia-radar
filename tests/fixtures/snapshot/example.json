@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-10-28T06:00:00Z",
+  "schema_version": 1,
+  "window_days": 90,
+  "projects": [
+    {
+      "id": "sped-nfe",
+      "status": "ok",
+      "metrics": {
+        "last_commit_at": "2026-10-27",
+        "last_release_at": "2026-10-14",
+        "commits_90d": 61,
+        "authors_90d": 9,
+        "top_author_share": 0.55,
+        "bus_factor": 1,
+        "archived": false,
+        "license": "LGPL-3.0",
+        "open_issues": 0
+      },
+      "health": { "activity": "active", "sustainability": "needs_hands" }
+    },
+    {
+      "id": "php-pix",
+      "status": "ok",
+      "metrics": {
+        "last_commit_at": "2025-03-02",
+        "last_release_at": null,
+        "commits_90d": 0,
+        "authors_90d": 0,
+        "top_author_share": null,
+        "bus_factor": null,
+        "archived": false,
+        "license": null,
+        "open_issues": 3
+      },
+      "health": { "activity": "no_recent_changes", "sustainability": "insufficient_data" }
+    },
+    {
+      "id": "openboleto",
+      "status": "error",
+      "error": "Repositório não encontrado (HTTP 404).",
+      "metrics": null,
+      "health": null
+    }
+  ]
+}

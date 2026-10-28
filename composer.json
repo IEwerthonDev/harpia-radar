@@ -1,0 +1,38 @@
+{
+    "name": "iewerthondev/harpia-radar",
+    "description": "Saúde dos projetos de código aberto de que o Brasil depende.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.5",
+        "opis/json-schema": "^2.6",
+        "symfony/console": "^8.1",
+        "symfony/http-client": "^8.1",
+        "symfony/yaml": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "HarpiaRadar\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HarpiaRadar\\Tests\\": "tests/"
+        }
+    },
+    "bin": ["bin/radar"],
+    "scripts": {
+        "test": "pest",
+        "stan": "phpstan analyse --memory-limit=512M --no-progress"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^5.3",
+        "phpstan/phpstan": "^2.3"
+    }
+}
