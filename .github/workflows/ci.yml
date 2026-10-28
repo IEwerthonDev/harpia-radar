@@ -4,6 +4,9 @@ on:
   pull_request:
   push:
     branches: [main]
+    # O commit diário do snapshot não muda código.
+    paths-ignore:
+      - data/**
 
 permissions:
   contents: read

@@ -32,9 +32,12 @@ jobs:
     steps:
       # Sempre a main mais recente: um re-run usaria o commit antigo do disparo, que
       # já não contém os snapshots gravados depois, e o push seria recusado.
+      # Com a main protegida, o push do snapshot usa uma deploy key liberada no ruleset.
+      # Sem o segredo SNAPSHOT_DEPLOY_KEY, o checkout usa o GITHUB_TOKEN, como antes.
       - uses: actions/checkout@v5
         with:
           ref: main
+          ssh-key: ${{ secrets.SNAPSHOT_DEPLOY_KEY }}
 
       - uses: shivammathur/setup-php@v2
         with:
