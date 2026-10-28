@@ -5,8 +5,11 @@ declare(strict_types=1);
 
 use HarpiaRadar\Catalog\CatalogLoader;
 use HarpiaRadar\Config\HealthConfigLoader;
+use HarpiaRadar\Console\BuildCommand;
 use HarpiaRadar\Console\CollectCommand;
 use HarpiaRadar\Console\ValidateCommand;
+use HarpiaRadar\Site\SiteBuilder;
+use HarpiaRadar\Snapshot\SnapshotReader;
 use HarpiaRadar\Snapshot\SnapshotWriter;
 use Symfony\Component\Console\Application;
 use Symfony\Component\HttpClient\HttpClient;
@@ -17,7 +20,9 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 $root = dirname(__DIR__);
 $token = getenv('GITHUB_TOKEN');
 $token = $token === false ? null : $token;
+$repositoryUrl = getenv('RADAR_REPOSITORY_URL') ?: 'https://github.com/IEwerthonDev/harpia-radar';
 $catalogLoader = new CatalogLoader($root . '/schema/projects.schema.json');
+$configLoader = new HealthConfigLoader($root . '/schema/health.schema.json');
 // Até 3 novas tentativas em erro de rede, 429 e 5xx, respeitando Retry-After.
 $httpClient = new RetryableHttpClient(HttpClient::create(), maxRetries: 3);
 
@@ -25,10 +30,17 @@ $application = new Application('Harpia Radar', '0.1.0');
 $application->addCommand(new ValidateCommand($catalogLoader, $httpClient, $token));
 $application->addCommand(new CollectCommand(
     $catalogLoader,
-    new HealthConfigLoader($root . '/schema/health.schema.json'),
+    $configLoader,
     new SnapshotWriter($root . '/schema/snapshot.schema.json'),
     $httpClient,
     $token,
     static fn (): DateTimeImmutable => new DateTimeImmutable('now', new DateTimeZone('UTC')),
+));
+$application->addCommand(new BuildCommand(
+    $catalogLoader,
+    $configLoader,
+    new SnapshotReader($root . '/schema/snapshot.schema.json'),
+    new SiteBuilder($root . '/templates'),
+    $repositoryUrl,
 ));
 $application->run();

@@ -1,0 +1,162 @@
+{#- Ícones decorativos: o texto do selo sempre diz tudo. A forma muda com o selo, então a cor nunca é a única pista. -#}
+{%- macro icon(key) -%}
+{%- set dots = {well_distributed: 3, few_people: 2, needs_hands: 1, insufficient_data: 0} -%}
+{%- if dots[key] is defined -%}
+<svg class="badge-icon" aria-hidden="true" focusable="false" viewBox="0 0 28 10" width="2.1em" height="0.75em">
+{%- for i in 0..2 -%}
+<circle cx="{{ 5 + i * 9 }}" cy="5" r="3.5" {% if i < dots[key] %}fill="currentColor"{% else %}fill="none" stroke="currentColor" stroke-width="1.5"{% endif %}/>
+{%- endfor -%}
+</svg>
+{%- else -%}
+<svg class="badge-icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em">
+{%- if key == 'active' -%}<circle cx="8" cy="8" r="6.5" fill="currentColor"/>
+{%- elseif key == 'active_no_recent_release' -%}<circle cx="8" cy="8" r="5.75" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2.25a5.75 5.75 0 0 1 0 11.5z" fill="currentColor"/>
+{%- elseif key == 'no_recent_changes' -%}<circle cx="8" cy="8" r="5.75" fill="none" stroke="currentColor" stroke-width="1.5"/>
+{%- else -%}<rect x="2" y="2" width="12" height="12" rx="1.5" fill="currentColor"/>
+{%- endif -%}
+</svg>
+{%- endif -%}
+{%- endmacro -%}
+{%- macro badge(badge) -%}
+<span class="badge badge-{{ badge.key }}">{{ _self.icon(badge.key) }} {{ badge.label }}</span>
+{%- endmacro -%}
+{%- import _self as ui -%}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Harpia Radar: a saúde dos projetos abertos de que o Brasil depende</title>
+    <meta name="description" content="Quais projetos de código aberto usados no Brasil estão ativos e quais são sustentados por poucas pessoas. Atualizado todo dia pela comunidade Harpia.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header">
+    <div class="container">
+        <p class="eyebrow">Comunidade Harpia</p>
+        <h1>Harpia Radar</h1>
+        <p class="lead">A saúde dos projetos de código aberto de que o Brasil depende: quais estão ativos e quais são sustentados por poucas pessoas e precisam de mãos.</p>
+        <p class="updated">Dados coletados em <time datetime="{{ generated_at.iso }}">{{ generated_at.date }}</time>, olhando os últimos {{ window_days }} dias.</p>
+        <nav aria-label="Seções da página">
+            <ul class="nav">
+                <li><a href="#onde-ajudar">Onde ajudar</a></li>
+                {% for category in categories %}
+                <li><a href="#categoria-{{ category.id }}">{{ category.name }}</a></li>
+                {% endfor %}
+                <li><a href="#como-ler">Como ler os selos</a></li>
+                <li><a href="#sugira">Sugira um projeto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="conteudo" class="container" tabindex="-1">
+    <section class="help" aria-labelledby="onde-ajudar">
+        <h2 id="onde-ajudar">Onde ajudar</h2>
+        <p>Projetos ativos sustentados principalmente por uma pessoa. Uma issue bem descrita, uma revisão ou um PR aqui fazem muita diferença.</p>
+        {% if help is empty %}
+        <p>Nenhum projeto da lista precisa de mãos agora.</p>
+        {% else %}
+        <ul class="help-list">
+            {% for project in help %}
+            <li>
+                <a href="#projeto-{{ project.id }}">{{ project.name }}</a>: {{ project.description }}
+                <a href="{{ project.help_url }}">Issues para começar<span class="visually-hidden"> em {{ project.name }}</span></a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+
+    {% for category in categories %}
+    <section aria-labelledby="categoria-{{ category.id }}">
+        <h2 id="categoria-{{ category.id }}">{{ category.name }}</h2>
+        {% if category.projects is empty %}
+        <p class="empty">Ainda não há projetos nesta categoria. <a href="#sugira">Sugira um</a>.</p>
+        {% else %}
+        <ul class="cards">
+            {% for project in category.projects %}
+            <li class="card" id="projeto-{{ project.id }}">
+                <article aria-labelledby="titulo-{{ project.id }}">
+                    <h3 id="titulo-{{ project.id }}"><a href="{{ project.url }}">{{ project.name }}</a></h3>
+                    <p class="description">{{ project.description }}</p>
+                    {% if project.state == 'ok' %}
+                    <dl class="badges">
+                        <div>
+                            <dt>Atividade</dt>
+                            <dd>{{ ui.badge(project.activity) }}</dd>
+                        </div>
+                        <div>
+                            <dt>Sustentação</dt>
+                            <dd>{{ ui.badge(project.sustainability) }}</dd>
+                        </div>
+                    </dl>
+                    <ul class="facts">
+                        {% for fact in project.facts %}
+                        <li>{{ fact }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="notice">{{ project.message }}</p>
+                    {% endif %}
+                    {% if project.language or project.replaces %}
+                    <p class="meta">
+                        {%- if project.language %}Linguagem: {{ project.language }}{% endif -%}
+                        {%- if project.language and project.replaces %} · {% endif -%}
+                        {%- if project.replaces %}Alternativa a: {{ project.replaces }}{% endif -%}
+                    </p>
+                    {% endif %}
+                    <p class="links"><a href="{{ project.help_url }}">Issues para começar<span class="visually-hidden"> em {{ project.name }}</span></a></p>
+                </article>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+    {% endfor %}
+
+    <section aria-labelledby="como-ler">
+        <h2 id="como-ler">Como ler os selos</h2>
+        <p>Cada projeto tem dois selos separados. <strong>Atividade</strong> diz se o projeto está mudando; <strong>Sustentação</strong> diz quantas pessoas sustentam essas mudanças. Não é ranking: não há nota única nem “melhor projeto”, e um projeto com poucas pessoas não é um projeto ruim.</p>
+        <p>Os dados vêm da API do GitHub, na branch padrão de cada repositório, e olham os últimos {{ window_days }} dias. Commits de bots ({{ bots|join(', ') }} e contas terminadas em {{ bot_suffix }}) não entram na conta. A página mostra só números, nunca nomes de pessoas.</p>
+
+        <h3>Atividade</h3>
+        <dl class="rules">
+            {% for rule in rules.activity %}
+            <div>
+                <dt>{{ ui.badge(rule.badge) }}</dt>
+                <dd>{{ rule.text }}</dd>
+            </div>
+            {% endfor %}
+        </dl>
+
+        <h3>Sustentação</h3>
+        <dl class="rules">
+            {% for rule in rules.sustainability %}
+            <div>
+                <dt>{{ ui.badge(rule.badge) }}</dt>
+                <dd>{{ rule.text }}</dd>
+            </div>
+            {% endfor %}
+        </dl>
+
+        <p>Os limites ficam em <a href="{{ repository_url }}/blob/main/config/health.yaml">config/health.yaml</a> e podem ser discutidos por PR.</p>
+    </section>
+
+    <section aria-labelledby="sugira">
+        <h2 id="sugira">Sugira um projeto</h2>
+        <p>A lista é curada por pessoas e aberta a todo mundo. Para sugerir um projeto, edite o arquivo <a href="{{ repository_url }}/blob/main/projects.yaml">projects.yaml</a> e abra um PR. O <a href="{{ repository_url }}/blob/main/CONTRIBUTING.md">guia de contribuição</a> explica o passo a passo.</p>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>O Harpia Radar é um projeto da <a href="https://github.com/harpiafoss">comunidade Harpia</a>. <a href="{{ repository_url }}">Código-fonte</a> sob licença MIT; <a href="snapshot.json">dados abertos</a> sob CC BY 4.0.</p>
+        <p>Esta página não usa cookies, analytics nem JavaScript.</p>
+    </div>
+</footer>
+</body>
+</html>

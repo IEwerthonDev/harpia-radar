@@ -1,0 +1,17 @@
+{
+    "defaults": {
+        "standard": "WCAG2AA",
+        "runners": ["axe", "htmlcs"],
+        "timeout": 60000,
+        "chromeLaunchConfig": {
+            "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+        }
+    },
+    "urls": [
+        "http://localhost:8080/index.html",
+        {
+            "url": "http://localhost:8080/index.html",
+            "viewport": { "width": 360, "height": 740 }
+        }
+    ]
+}

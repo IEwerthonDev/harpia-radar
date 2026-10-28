@@ -129,3 +129,17 @@ function githubFixtureClient(array $repos, array $overrides = []): Symfony\Compo
         'https://api.github.com',
     );
 }
+
+/**
+ * @return array<string, mixed>
+ */
+function siteSnapshot(): array
+{
+    /** @var array<string, mixed> */
+    return json_decode((string) file_get_contents(fixturePath('snapshot/site.json')), true, flags: JSON_THROW_ON_ERROR);
+}
+
+function siteCatalog(): HarpiaRadar\Catalog\Catalog
+{
+    return (new HarpiaRadar\Catalog\CatalogLoader(projectRoot('schema/projects.schema.json')))->load(fixturePath('catalog/site.yaml'));
+}

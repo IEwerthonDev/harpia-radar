@@ -8,7 +8,8 @@
         "opis/json-schema": "^2.6",
         "symfony/console": "^8.1",
         "symfony/http-client": "^8.1",
-        "symfony/yaml": "^8.1"
+        "symfony/yaml": "^8.1",
+        "twig/twig": "^3.30"
     },
     "autoload": {
         "psr-4": {

@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-10-28T06:00:00Z",
+  "schema_version": 1,
+  "window_days": 90,
+  "projects": [
+    {
+      "id": "sped-nfe",
+      "status": "ok",
+      "metrics": {
+        "last_commit_at": "2026-10-27",
+        "last_release_at": "2026-10-02",
+        "commits_90d": 31,
+        "authors_90d": 7,
+        "top_author_share": 0.5484,
+        "bus_factor": 1,
+        "archived": false,
+        "license": "NOASSERTION",
+        "open_issues": 12
+      },
+      "health": { "activity": "active", "sustainability": "needs_hands" }
+    },
+    {
+      "id": "sped-da",
+      "status": "ok",
+      "metrics": {
+        "last_commit_at": "2026-10-26",
+        "last_release_at": "2024-05-07",
+        "commits_90d": 22,
+        "authors_90d": 7,
+        "top_author_share": 0.3636,
+        "bus_factor": 2,
+        "archived": false,
+        "license": "MIT",
+        "open_issues": 3
+      },
+      "health": { "activity": "active_no_recent_release", "sustainability": "few_people" }
+    },
+    {
+      "id": "old-lib",
+      "status": "ok",
+      "metrics": {
+        "last_commit_at": "2026-09-01",
+        "last_release_at": null,
+        "commits_90d": 12,
+        "authors_90d": 1,
+        "top_author_share": 1.0,
+        "bus_factor": 1,
+        "archived": true,
+        "license": null,
+        "open_issues": 0
+      },
+      "health": { "activity": "archived", "sustainability": "needs_hands" }
+    },
+    {
+      "id": "php-pix",
+      "status": "ok",
+      "metrics": {
+        "last_commit_at": "2024-05-19",
+        "last_release_at": "2024-05-19",
+        "commits_90d": 0,
+        "authors_90d": 0,
+        "top_author_share": null,
+        "bus_factor": null,
+        "archived": false,
+        "license": "MIT",
+        "open_issues": 1
+      },
+      "health": { "activity": "no_recent_changes", "sustainability": "insufficient_data" }
+    },
+    {
+      "id": "php-qrcode-pix",
+      "status": "ok",
+      "metrics": {
+        "last_commit_at": "2026-08-18",
+        "last_release_at": null,
+        "commits_90d": 1,
+        "authors_90d": 1,
+        "top_author_share": 1.0,
+        "bus_factor": 1,
+        "archived": false,
+        "license": "CC0-1.0",
+        "open_issues": 13
+      },
+      "health": { "activity": "active_no_recent_release", "sustainability": "insufficient_data" }
+    },
+    {
+      "id": "openboleto",
+      "status": "error",
+      "error": "Repositório github:openboleto/openboleto não encontrado ou privado (HTTP 404).",
+      "metrics": null,
+      "health": null
+    }
+  ]
+}

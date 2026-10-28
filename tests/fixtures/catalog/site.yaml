@@ -1,0 +1,54 @@
+categories:
+  - id: fiscal
+    name: Fiscal e notas
+  - id: payments
+    name: Pagamentos, boleto e Pix
+  - id: documents-pdf
+    name: Documentos e PDF
+
+projects:
+  - id: sped-nfe
+    name: sped-nfe
+    repo: github:nfephp-org/sped-nfe
+    category: fiscal
+    description: Emissão de NF-e e NFC-e.
+    language: PHP
+    replaces: Emissores fiscais pagos
+    tags: [nf-e, nfc-e]
+
+  - id: sped-da
+    name: sped-da
+    repo: github:nfephp-org/sped-da
+    category: fiscal
+    description: Geração dos documentos auxiliares do Sped.
+    language: PHP
+
+  - id: old-lib
+    name: old-lib
+    repo: github:example/old-lib
+    category: fiscal
+    description: Biblioteca arquivada.
+
+  - id: php-pix
+    name: php-pix
+    repo: github:piggly-dev/php-pix
+    category: payments
+    description: Geração do código Pix.
+
+  - id: php-qrcode-pix
+    name: php-qrcode-pix
+    repo: github:renatomb/php_qrcode_pix
+    category: payments
+    description: Geração de QR Code do Pix.
+
+  - id: openboleto
+    name: openboleto
+    repo: github:openboleto/openboleto
+    category: payments
+    description: Geração de boletos bancários.
+
+  - id: laravel-boleto
+    name: laravel-boleto
+    repo: github:eduardokum/laravel-boleto
+    category: payments
+    description: Geração de boletos e arquivos CNAB.
