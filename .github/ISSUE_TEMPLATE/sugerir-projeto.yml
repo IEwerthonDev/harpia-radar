@@ -1,0 +1,36 @@
+name: Sugerir projeto
+description: Sugira um projeto de código aberto para o Radar acompanhar
+labels: [sugestão de projeto]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado pela sugestão! Se puder, abra direto um PR editando o `projects.yaml` (veja o CONTRIBUTING.md). Se não, preencha abaixo.
+  - type: input
+    id: repo
+    attributes:
+      label: Repositório
+      placeholder: https://github.com/dono/repositorio
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria
+      options:
+        - Fiscal e notas
+        - Pagamentos, boleto e Pix
+        - Documentos e PDF
+        - Assinatura digital
+        - Transparência
+        - Infraestrutura
+        - Outra (explique abaixo)
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Por que este projeto importa para o Brasil?
+      description: Quem usa, o que ele substitui, por que vale acompanhar.
+    validations:
+      required: true

@@ -1,0 +1,3 @@
+# Cada PR precisa de uma aprovação de uma destas pessoas.
+# Ative "Require review from Code Owners" na proteção da branch main.
+* @IEwerthonDev
