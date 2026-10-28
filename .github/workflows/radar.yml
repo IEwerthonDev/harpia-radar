@@ -30,7 +30,11 @@ jobs:
       CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
       CODEBERG_REPOSITORY: ${{ vars.CODEBERG_REPOSITORY }}
     steps:
+      # Sempre a main mais recente: um re-run usaria o commit antigo do disparo, que
+      # já não contém os snapshots gravados depois, e o push seria recusado.
       - uses: actions/checkout@v5
+        with:
+          ref: main
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -56,7 +60,17 @@ jobs:
             echo 'Snapshot sem mudanças.'
           else
             git commit -m "chore(data): snapshot $(date -u +%Y-%m-%d)"
-            git push
+            # Se a main andou durante a coleta, refaz o commit em cima dela.
+            # Em conflito no snapshot, fica o recém-coletado (-X theirs, no rebase, é o nosso commit).
+            for attempt in 1 2 3; do
+              if git push; then
+                exit 0
+              fi
+              echo "Push recusado (tentativa ${attempt}); atualizando a main."
+              git fetch origin main
+              git rebase -X theirs origin/main
+            done
+            exit 1
           fi
 
       - name: Gerar a página

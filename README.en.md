@@ -7,7 +7,7 @@ The health of the open source projects Brazil depends on, updated daily.
 For each listed project, the Radar shows whether it is changing (**Activity**) and how many people sustain those changes (**Sustainability**). The goal is to point out where the community can help: projects that are active but carried by a single person. It was born in [discussion #10](https://github.com/orgs/HarpyBR/discussions/10) of the Harpia community and automates the survey that was first done by hand there.
 
 - **Page (Portuguese):** https://iewerthondev.github.io/harpia-radar/
-- **Mirror:** https://iewerthondev.codeberg.page/harpia-radar/
+- **Mirror:** https://spiralout.codeberg.page/harpia-radar/
 - **Open data:** [`data/snapshot.json`](data/snapshot.json), with history in git
 
 The page is in Portuguese because its audience is Brazilian developers, small businesses and public managers. Code, commits and data keys are in English.

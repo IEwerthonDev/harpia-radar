@@ -7,7 +7,7 @@ A saúde dos projetos de código aberto de que o Brasil depende, atualizada todo
 O Radar mostra, para cada projeto da lista, se ele está mudando (**Atividade**) e quantas pessoas sustentam essas mudanças (**Sustentação**). O objetivo é apontar onde a comunidade pode ajudar: projetos ativos, mas sustentados por uma pessoa só. Ele nasceu da [discussão #10](https://github.com/orgs/HarpyBR/discussions/10) da comunidade Harpia e automatiza o levantamento feito ali à mão.
 
 - **Página:** https://iewerthondev.github.io/harpia-radar/
-- **Espelho:** https://iewerthondev.codeberg.page/harpia-radar/
+- **Espelho:** https://spiralout.codeberg.page/harpia-radar/
 - **Dados abertos:** [`data/snapshot.json`](data/snapshot.json), com histórico no próprio git
 
 ## O que o Radar é, e o que não é
