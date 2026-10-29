@@ -6,9 +6,6 @@ namespace HarpiaRadar\Source;
 
 use DateTimeImmutable;
 
-/**
- * Dados brutos de um repositório, como vieram da forja.
- */
 final readonly class RepositoryData
 {
     /**

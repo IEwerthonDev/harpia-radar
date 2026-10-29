@@ -11,9 +11,6 @@ use JsonException;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-/**
- * GET autenticado na API REST do GitHub, com as falhas traduzidas em RepositoryNotAccessible.
- */
 final readonly class GitHubApi
 {
     public function __construct(

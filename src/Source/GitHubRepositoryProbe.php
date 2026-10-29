@@ -6,9 +6,6 @@ namespace HarpiaRadar\Source;
 
 use HarpiaRadar\Catalog\RepoRef;
 
-/**
- * Confere se um repositório existe e é público, com GET /repos/{owner}/{repo}.
- */
 final readonly class GitHubRepositoryProbe
 {
     public function __construct(private GitHubApi $api)

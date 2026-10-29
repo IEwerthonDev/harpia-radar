@@ -36,7 +36,6 @@ it('collects every field of a repository with releases', function (): void {
 });
 
 it('uses the tag when it is newer than the last release', function (): void {
-    // Dado real: o último release do sped-nfe é de 2020, mas a última tag é de 2026.
     $data = fetchRepo(githubFixtureClient(REPOS), 'github:nfephp-org/sped-nfe');
 
     expect($data->lastReleaseAt)->toEqual(utc('2026-10-02T12:40:30Z'));

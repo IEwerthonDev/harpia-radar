@@ -23,7 +23,7 @@ final readonly class Metrics
     }
 
     /**
-     * Formato do snapshot. As chaves seguem a spec, mesmo que a janela mude em config/health.yaml.
+     * As chaves seguem a spec, mesmo que a janela mude em config/health.yaml.
      *
      * @return array<string, mixed>
      */

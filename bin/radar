@@ -23,7 +23,6 @@ $token = $token === false ? null : $token;
 $repositoryUrl = getenv('RADAR_REPOSITORY_URL') ?: 'https://github.com/IEwerthonDev/harpia-radar';
 $catalogLoader = new CatalogLoader($root . '/schema/projects.schema.json');
 $configLoader = new HealthConfigLoader($root . '/schema/health.schema.json');
-// Até 3 novas tentativas em erro de rede, 429 e 5xx, respeitando Retry-After.
 $httpClient = new RetryableHttpClient(HttpClient::create(), maxRetries: 3);
 
 $application = new Application('Harpia Radar', '0.1.0');

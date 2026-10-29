@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace HarpiaRadar\Config;
 
-/**
- * Janela de análise, limiares dos selos e bots, lidos de config/health.yaml.
- */
 final readonly class HealthConfig
 {
     /**

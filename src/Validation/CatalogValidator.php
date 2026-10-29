@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace HarpiaRadar\Validation;
 
 /**
- * Regras do catálogo que o JSON Schema não expressa: ids únicos e categorias declaradas.
- *
  * Trabalha sobre os dados crus e ignora valores que o schema já rejeita, para que todos os
  * problemas apareçam de uma vez.
  */
@@ -14,9 +12,6 @@ final readonly class CatalogValidator
 {
     public const string ID_PATTERN = '~^[a-z0-9]+(-[a-z0-9]+)*$~';
 
-    /**
-     * Como um projeto é chamado nas mensagens: pelo id, se for válido; senão, pela posição.
-     */
     public static function projectLabel(mixed $entry, int $index): string
     {
         $id = is_array($entry) ? ($entry['id'] ?? null) : null;

@@ -11,9 +11,6 @@ use HarpiaRadar\Validation\ValidationError;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
-/**
- * Lê projects.yaml, valida contra o schema e as regras do catálogo e devolve um Catalog.
- */
 final readonly class CatalogLoader
 {
     public function __construct(

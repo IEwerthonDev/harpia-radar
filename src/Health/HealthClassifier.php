@@ -9,9 +9,6 @@ use DateTimeImmutable;
 use HarpiaRadar\Config\HealthConfig;
 use HarpiaRadar\Metrics\Metrics;
 
-/**
- * Aplica as regras de classificação da spec. Puro: sem I/O e sem ler o relógio.
- */
 final readonly class HealthClassifier
 {
     public function classify(Metrics $metrics, HealthConfig $config, DateTimeImmutable $now): Health

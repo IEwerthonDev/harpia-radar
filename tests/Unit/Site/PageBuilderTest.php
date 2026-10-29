@@ -69,7 +69,7 @@ it('labels every badge value', function (string $id, string $activity, string $s
 })->with([
     ['sped-da', 'Ativo, sem release recente', 'Poucas pessoas'],
     ['old-lib', 'Arquivado', 'Precisa de mãos'],
-    ['php-pix', 'Sem alterações recentes', 'Poucos dados na janela'],
+    ['php-pix', 'Sem alterações recentes', 'Poucos commits para medir'],
 ]);
 
 it('lists aggregated facts', function (): void {
@@ -114,6 +114,10 @@ it('marks projects not collected yet', function (): void {
 
 it('lists where to help: needs hands and not archived', function (): void {
     expect(array_column(page()['help'], 'id'))->toBe(['sped-nfe']);
+});
+
+it('summarizes the catalog: total, active and needing hands', function (): void {
+    expect(page()['summary'])->toBe(['total' => 7, 'active' => 3, 'help' => 1]);
 });
 
 it('explains the rules with the configured thresholds', function (): void {

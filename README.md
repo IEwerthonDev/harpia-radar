@@ -25,7 +25,7 @@ O Radar existe para ajudar quem mantém projetos, nunca para expor ninguém. Um 
 | Selo | Valores |
 | --- | --- |
 | Atividade | Ativo · Ativo, sem release recente · Sem alterações recentes · Arquivado |
-| Sustentação | Bem distribuído · Poucas pessoas · Precisa de mãos · Poucos dados na janela |
+| Sustentação | Bem distribuído · Poucas pessoas · Precisa de mãos · Poucos commits para medir |
 
 As regras exatas estão na seção "Como ler os selos" da página. Os limites ficam em [`config/health.yaml`](config/health.yaml) e podem ser discutidos via PR. A especificação completa está em [`docs/SPEC.md`](docs/SPEC.md).
 

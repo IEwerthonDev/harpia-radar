@@ -10,9 +10,6 @@ use HarpiaRadar\Config\HealthConfig;
 use HarpiaRadar\Source\Commit;
 use HarpiaRadar\Source\RepositoryData;
 
-/**
- * Calcula as métricas de um repositório. Puro: sem I/O e sem ler o relógio.
- */
 final readonly class MetricsCalculator
 {
     public function calculate(RepositoryData $data, HealthConfig $config, DateTimeImmutable $now): Metrics
@@ -84,7 +81,7 @@ final readonly class MetricsCalculator
     }
 
     /**
-     * Login do GitHub quando existe; senão, o e-mail em minúsculas. O prefixo evita colisão entre os dois.
+     * O prefixo evita colisão entre login e e-mail.
      */
     private static function authorKey(Commit $commit): string
     {

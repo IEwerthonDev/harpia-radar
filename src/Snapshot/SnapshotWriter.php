@@ -17,9 +17,6 @@ final readonly class SnapshotWriter
     ) {
     }
 
-    /**
-     * Valida contra o schema e grava de forma atômica, para nunca deixar um snapshot pela metade.
-     */
     public function write(Snapshot $snapshot, string $path): void
     {
         $data = $snapshot->toArray();
