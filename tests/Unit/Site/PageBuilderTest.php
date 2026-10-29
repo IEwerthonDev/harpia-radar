@@ -69,7 +69,7 @@ it('labels every badge value', function (string $id, string $activity, string $s
 })->with([
     ['sped-da', 'Ativo, sem release recente', 'Poucas pessoas'],
     ['old-lib', 'Arquivado', 'Precisa de mãos'],
-    ['php-pix', 'Sem alterações recentes', 'Poucos dados na janela'],
+    ['php-pix', 'Sem alterações recentes', 'Poucos commits para medir'],
 ]);
 
 it('lists aggregated facts', function (): void {

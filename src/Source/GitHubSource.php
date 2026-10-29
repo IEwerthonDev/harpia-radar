@@ -11,7 +11,6 @@ use HarpiaRadar\Catalog\RepoRef;
 
 final readonly class GitHubSource implements SourceInterface
 {
-    /** Teto de páginas de commits por projeto (100 commits cada). */
     private const int MAX_PAGES = 50;
 
     public function __construct(private GitHubApi $api)
@@ -40,8 +39,6 @@ final readonly class GitHubSource implements SourceInterface
     }
 
     /**
-     * Data mais recente entre o último release e a última tag; sem nenhum dos dois, nulo.
-     *
      * Muitos projetos PHP publicam versões só como tags (via Packagist) e têm releases antigos
      * no GitHub, então olhar só para o release os marcaria como "sem release recente".
      */

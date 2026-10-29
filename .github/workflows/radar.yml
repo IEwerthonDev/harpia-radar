@@ -2,7 +2,6 @@ name: Radar diário
 
 on:
   schedule:
-    # Todo dia às 05:23 UTC (02:23 em Brasília). Minuto quebrado para fugir do pico do Actions.
     - cron: '23 5 * * *'
   workflow_dispatch:
   push:
@@ -30,10 +29,8 @@ jobs:
       CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
       CODEBERG_REPOSITORY: ${{ vars.CODEBERG_REPOSITORY }}
     steps:
-      # Sempre a main mais recente: um re-run usaria o commit antigo do disparo, que
-      # já não contém os snapshots gravados depois, e o push seria recusado.
-      # Com a main protegida, o push do snapshot usa uma deploy key liberada no ruleset.
-      # Sem o segredo SNAPSHOT_DEPLOY_KEY, o checkout usa o GITHUB_TOKEN, como antes.
+      # ref: main para um re-run não partir de um commit antigo e ter o push recusado.
+      # A deploy key é a que o ruleset da main deixa fazer push.
       - uses: actions/checkout@v7
         with:
           ref: main
@@ -47,8 +44,6 @@ jobs:
       - name: Instalar dependências
         run: composer install --no-dev --no-interaction --no-progress --prefer-dist
 
-      # Se a coleta falhar por completo, o comando sai com erro, nada é publicado
-      # e a página anterior continua no ar (RF-06).
       - name: Coletar dados
         run: bin/radar collect
         env:
@@ -63,8 +58,7 @@ jobs:
             echo 'Snapshot sem mudanças.'
           else
             git commit -m "chore(data): snapshot $(date -u +%Y-%m-%d)"
-            # Se a main andou durante a coleta, refaz o commit em cima dela.
-            # Em conflito no snapshot, fica o recém-coletado (-X theirs, no rebase, é o nosso commit).
+            # No rebase, -X theirs é o nosso commit: fica o snapshot recém-coletado.
             for attempt in 1 2 3; do
               if git push; then
                 exit 0

@@ -7,9 +7,6 @@ namespace HarpiaRadar\Catalog;
 use InvalidArgumentException;
 use Stringable;
 
-/**
- * Referência a um repositório numa forja, no formato "github:dono/nome".
- */
 final readonly class RepoRef implements Stringable
 {
     private const string PATTERN = '~^(github):([A-Za-z0-9][A-Za-z0-9-]*)/([A-Za-z0-9._-]+)$~';

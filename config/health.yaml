@@ -9,7 +9,7 @@ activity:
   release_max_age_months: 12
 
 sustainability:
-  # Abaixo deste número de commits na janela: "Poucos dados na janela".
+  # Abaixo deste número de commits na janela: "Poucos commits para medir".
   min_commits: 10
   # bus_factor a partir deste valor: "Bem distribuído".
   well_distributed_bus_factor: 3

@@ -12,14 +12,8 @@ use HarpiaRadar\Config\HealthConfig;
 use HarpiaRadar\Health\Activity;
 use HarpiaRadar\Health\Sustainability;
 
-/**
- * Monta os dados da página a partir do catálogo, do snapshot e da configuração. Puro: sem I/O.
- *
- * Só números agregados chegam aqui; o snapshot não tem nomes nem logins.
- */
 final readonly class PageBuilder
 {
-    /** O ícone de cada selo fica no template, desenhado a partir da chave. */
     private const array ACTIVITY = [
         'active' => 'Ativo',
         'active_no_recent_release' => 'Ativo, sem release recente',
@@ -31,7 +25,7 @@ final readonly class PageBuilder
         'well_distributed' => 'Bem distribuído',
         'few_people' => 'Poucas pessoas',
         'needs_hands' => 'Precisa de mãos',
-        'insufficient_data' => 'Poucos dados na janela',
+        'insufficient_data' => 'Poucos commits para medir',
     ];
 
     /**

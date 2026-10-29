@@ -8,9 +8,6 @@ use RuntimeException;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-/**
- * Renderiza os templates Twig e grava a página estática.
- */
 final readonly class SiteBuilder
 {
     private Environment $twig;

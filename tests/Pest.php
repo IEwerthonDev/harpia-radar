@@ -25,8 +25,6 @@ function validCatalogData(): array
 }
 
 /**
- * Grava um catálogo num arquivo temporário e devolve o caminho.
- *
  * @param array<string, mixed> $data
  */
 function writeCatalog(array $data): string
@@ -49,8 +47,6 @@ function githubResponse(string $fixture, int $status = 200, array $headers = [])
 }
 
 /**
- * Configuração de saúde com os valores da spec, para os testes não dependerem do arquivo do repositório.
- *
  * @param array<string, mixed> $overrides
  */
 function healthConfig(array $overrides = []): HarpiaRadar\Config\HealthConfig
@@ -73,9 +69,6 @@ function utc(string $time): DateTimeImmutable
 }
 
 /**
- * Responde às requisições do GitHub a partir das fixtures de tests/fixtures/github/<projeto>/.
- * Repositórios fora do mapa respondem 404.
- *
  * @param array<string, string> $repos "dono/nome" => pasta da fixture
  * @param array<string, MockResponse|callable(): MockResponse> $overrides "pasta:rota" => resposta; "next-page" para links de paginação
  */

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace HarpiaRadar\Validation;
 
-/**
- * Um problema encontrado na lista curada, descrito para quem edita o YAML.
- */
 final readonly class ValidationError
 {
     private function __construct(

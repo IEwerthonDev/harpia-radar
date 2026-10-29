@@ -1,4 +1,3 @@
-{#- Ícones decorativos: o texto do selo sempre diz tudo. A forma muda com o selo, então a cor nunca é a única pista. -#}
 {%- macro icon(key) -%}
 {%- set dots = {well_distributed: 3, few_people: 2, needs_hands: 1, insufficient_data: 0} -%}
 {%- if dots[key] is defined -%}
@@ -42,7 +41,6 @@
                 <img src="logo.png" alt="" width="48" height="48">
                 <span>Comunidade Harpia</span>
             </p>
-            {#- Troca de tema só com CSS (:has), sem JavaScript; volta ao automático ao recarregar. -#}
             <fieldset class="theme">
                 <legend class="visually-hidden">Tema da página</legend>
                 <input type="radio" name="tema" id="tema-auto" value="auto" checked>

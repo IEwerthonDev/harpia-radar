@@ -101,7 +101,7 @@ A concentração é calculada assim, onde cᵢ é o número de commits do autor 
 | Sustentação | Bem distribuído | `bus_factor` ≥ 3 |
 | Sustentação | Poucas pessoas | `bus_factor` = 2 |
 | Sustentação | Precisa de mãos | `bus_factor` = 1 ou `top_author_share` > 75% |
-| Sustentação | Poucos dados na janela | Menos de 10 commits em 90 dias: amostra pequena demais para medir |
+| Sustentação | Poucos commits para medir | Menos de 10 commits em 90 dias: amostra pequena demais para medir |
 
 A janela de 90 dias mostra o estado atual do projeto. Um projeto estável que muda pouco aparece como "Sem alterações recentes" com a data da última alteração, o que não é demérito. Cor nunca é a única informação: todo selo tem texto e ícone.
 

@@ -10,9 +10,6 @@ use Opis\JsonSchema\Helper;
 use Opis\JsonSchema\Validator;
 use RuntimeException;
 
-/**
- * Valida dados contra um JSON Schema e devolve todas as violações, com mensagens em português.
- */
 final class SchemaValidator
 {
     private readonly Validator $validator;
