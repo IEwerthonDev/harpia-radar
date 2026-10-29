@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-10-29T11:36:04Z",
+    "generated_at": "2026-10-29T14:38:57Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -28,9 +28,9 @@
             "metrics": {
                 "last_commit_at": "2026-10-26",
                 "last_release_at": "2024-05-07",
-                "commits_90d": 22,
+                "commits_90d": 21,
                 "authors_90d": 7,
-                "top_author_share": 0.3636,
+                "top_author_share": 0.3333,
                 "bus_factor": 2,
                 "archived": false,
                 "license": "NOASSERTION",
