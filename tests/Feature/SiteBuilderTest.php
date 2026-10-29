@@ -19,11 +19,12 @@ function siteHtml(): string
     return (string) file_get_contents(buildSite() . '/index.html');
 }
 
-it('writes the page, the stylesheet and the open data', function (): void {
+it('writes the page, the stylesheet, the logo and the open data', function (): void {
     $output = buildSite();
 
     expect($output . '/index.html')->toBeFile()
         ->and($output . '/style.css')->toBeFile()
+        ->and(file_get_contents($output . '/logo.png'))->toBe(file_get_contents(projectRoot('templates/logo.png')))
         ->and(file_get_contents($output . '/snapshot.json'))->toBe(file_get_contents(fixturePath('snapshot/site.json')));
 });
 

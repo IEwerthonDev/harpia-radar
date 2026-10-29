@@ -29,6 +29,7 @@
     <meta name="color-scheme" content="light dark">
     <title>Harpia Radar: a saúde dos projetos abertos de que o Brasil depende</title>
     <meta name="description" content="Quais projetos de código aberto usados no Brasil estão ativos e quais são sustentados por poucas pessoas. Atualizado todo dia pela comunidade Harpia.">
+    <link rel="icon" href="logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,22 +37,52 @@
 
 <header class="site-header">
     <div class="container">
-        <p class="eyebrow">Comunidade Harpia</p>
+        <div class="topbar">
+            <p class="brand">
+                <img src="logo.png" alt="" width="48" height="48">
+                <span>Comunidade Harpia</span>
+            </p>
+            {#- Troca de tema só com CSS (:has), sem JavaScript; volta ao automático ao recarregar. -#}
+            <fieldset class="theme">
+                <legend class="visually-hidden">Tema da página</legend>
+                <input type="radio" name="tema" id="tema-auto" value="auto" checked>
+                <label for="tema-auto">Auto</label>
+                <input type="radio" name="tema" id="tema-claro" value="claro">
+                <label for="tema-claro">Claro</label>
+                <input type="radio" name="tema" id="tema-escuro" value="escuro">
+                <label for="tema-escuro">Escuro</label>
+            </fieldset>
+        </div>
         <h1>Harpia Radar</h1>
         <p class="lead">A saúde dos projetos de código aberto de que o Brasil depende: quais estão ativos e quais são sustentados por poucas pessoas e precisam de mãos.</p>
-        <p class="updated">Dados coletados em <time datetime="{{ generated_at.iso }}">{{ generated_at.date }}</time>, olhando os últimos {{ window_days }} dias.</p>
-        <nav aria-label="Seções da página">
-            <ul class="nav">
-                <li><a href="#onde-ajudar">Onde ajudar</a></li>
-                {% for category in categories %}
-                <li><a href="#categoria-{{ category.id }}">{{ category.name }}</a></li>
-                {% endfor %}
-                <li><a href="#como-ler">Como ler os selos</a></li>
-                <li><a href="#sugira">Sugira um projeto</a></li>
-            </ul>
-        </nav>
+        <p class="updated">Dados de <time datetime="{{ generated_at.iso }}">{{ generated_at.date }}</time>, olhando os últimos {{ window_days }} dias.</p>
+        <dl class="stats">
+            <div>
+                <dt>Projetos acompanhados</dt>
+                <dd>{{ summary.total }}</dd>
+            </div>
+            <div>
+                <dt>Ativos</dt>
+                <dd>{{ summary.active }}</dd>
+            </div>
+            <div class="stat-help">
+                <dt>Precisam de mãos</dt>
+                <dd>{{ summary.help }}</dd>
+            </div>
+        </dl>
     </div>
 </header>
+
+<nav class="site-nav" aria-label="Seções da página">
+    <ul class="container">
+        <li><a href="#onde-ajudar">Onde ajudar</a></li>
+        {% for category in categories %}
+        <li><a href="#categoria-{{ category.id }}">{{ category.name }}</a></li>
+        {% endfor %}
+        <li><a href="#como-ler">Como ler os selos</a></li>
+        <li><a href="#sugira">Sugira um projeto</a></li>
+    </ul>
+</nav>
 
 <main id="conteudo" class="container" tabindex="-1">
     <section class="help" aria-labelledby="onde-ajudar">
@@ -63,8 +94,8 @@
         <ul class="help-list">
             {% for project in help %}
             <li>
-                <a href="#projeto-{{ project.id }}">{{ project.name }}</a>: {{ project.description }}
-                <a href="{{ project.help_url }}">Issues para começar<span class="visually-hidden"> em {{ project.name }}</span></a>
+                <p><a href="#projeto-{{ project.id }}">{{ project.name }}</a> <span class="muted">{{ project.description }}</span></p>
+                <a class="button" href="{{ project.help_url }}">Issues para começar<span class="visually-hidden"> em {{ project.name }}</span></a>
             </li>
             {% endfor %}
         </ul>
@@ -77,12 +108,21 @@
         {% if category.projects is empty %}
         <p class="empty">Ainda não há projetos nesta categoria. <a href="#sugira">Sugira um</a>.</p>
         {% else %}
-        <ul class="cards">
+        <ul class="projects">
             {% for project in category.projects %}
-            <li class="card" id="projeto-{{ project.id }}">
+            <li class="project" id="projeto-{{ project.id }}">
                 <article aria-labelledby="titulo-{{ project.id }}">
-                    <h3 id="titulo-{{ project.id }}"><a href="{{ project.url }}">{{ project.name }}</a></h3>
-                    <p class="description">{{ project.description }}</p>
+                    <div class="project-head">
+                        <h3 id="titulo-{{ project.id }}"><a href="{{ project.url }}">{{ project.name }}</a></h3>
+                        <p class="description">{{ project.description }}</p>
+                        {% if project.language or project.replaces %}
+                        <p class="meta">
+                            {%- if project.language %}{{ project.language }}{% endif -%}
+                            {%- if project.language and project.replaces %} · {% endif -%}
+                            {%- if project.replaces %}Alternativa a: {{ project.replaces }}{% endif -%}
+                        </p>
+                        {% endif %}
+                    </div>
                     {% if project.state == 'ok' %}
                     <dl class="badges">
                         <div>
@@ -102,13 +142,6 @@
                     {% else %}
                     <p class="notice">{{ project.message }}</p>
                     {% endif %}
-                    {% if project.language or project.replaces %}
-                    <p class="meta">
-                        {%- if project.language %}Linguagem: {{ project.language }}{% endif -%}
-                        {%- if project.language and project.replaces %} · {% endif -%}
-                        {%- if project.replaces %}Alternativa a: {{ project.replaces }}{% endif -%}
-                    </p>
-                    {% endif %}
                     <p class="links"><a href="{{ project.help_url }}">Issues para começar<span class="visually-hidden"> em {{ project.name }}</span></a></p>
                 </article>
             </li>
@@ -121,32 +154,35 @@
     <section aria-labelledby="como-ler">
         <h2 id="como-ler">Como ler os selos</h2>
         <p>Cada projeto tem dois selos separados. <strong>Atividade</strong> diz se o projeto está mudando; <strong>Sustentação</strong> diz quantas pessoas sustentam essas mudanças. Não é ranking: não há nota única nem “melhor projeto”, e um projeto com poucas pessoas não é um projeto ruim.</p>
-        <p>Os dados vêm da API do GitHub, na branch padrão de cada repositório, e olham os últimos {{ window_days }} dias. Commits de bots ({{ bots|join(', ') }} e contas terminadas em {{ bot_suffix }}) não entram na conta. A página mostra só números, nunca nomes de pessoas.</p>
+        <details>
+            <summary>Ver os critérios de cada selo</summary>
+            <p>Os dados vêm da API do GitHub, na branch padrão de cada repositório, e olham os últimos {{ window_days }} dias. Commits de bots ({{ bots|join(', ') }} e contas terminadas em {{ bot_suffix }}) não entram na conta. A página mostra só números, nunca nomes de pessoas.</p>
 
-        <h3>Atividade</h3>
-        <dl class="rules">
-            {% for rule in rules.activity %}
-            <div>
-                <dt>{{ ui.badge(rule.badge) }}</dt>
-                <dd>{{ rule.text }}</dd>
-            </div>
-            {% endfor %}
-        </dl>
+            <h3>Atividade</h3>
+            <dl class="rules">
+                {% for rule in rules.activity %}
+                <div>
+                    <dt>{{ ui.badge(rule.badge) }}</dt>
+                    <dd>{{ rule.text }}</dd>
+                </div>
+                {% endfor %}
+            </dl>
 
-        <h3>Sustentação</h3>
-        <dl class="rules">
-            {% for rule in rules.sustainability %}
-            <div>
-                <dt>{{ ui.badge(rule.badge) }}</dt>
-                <dd>{{ rule.text }}</dd>
-            </div>
-            {% endfor %}
-        </dl>
+            <h3>Sustentação</h3>
+            <dl class="rules">
+                {% for rule in rules.sustainability %}
+                <div>
+                    <dt>{{ ui.badge(rule.badge) }}</dt>
+                    <dd>{{ rule.text }}</dd>
+                </div>
+                {% endfor %}
+            </dl>
 
-        <p>Os limites ficam em <a href="{{ repository_url }}/blob/main/config/health.yaml">config/health.yaml</a> e podem ser discutidos por PR.</p>
+            <p>Os limites ficam em <a href="{{ repository_url }}/blob/main/config/health.yaml">config/health.yaml</a> e podem ser discutidos por PR.</p>
+        </details>
     </section>
 
-    <section aria-labelledby="sugira">
+    <section class="suggest" aria-labelledby="sugira">
         <h2 id="sugira">Sugira um projeto</h2>
         <p>A lista é curada por pessoas e aberta a todo mundo. Para sugerir um projeto, edite o arquivo <a href="{{ repository_url }}/blob/main/projects.yaml">projects.yaml</a> e abra um PR. O <a href="{{ repository_url }}/blob/main/CONTRIBUTING.md">guia de contribuição</a> explica o passo a passo.</p>
     </section>

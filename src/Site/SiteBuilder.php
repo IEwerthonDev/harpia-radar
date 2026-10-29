@@ -39,6 +39,7 @@ final readonly class SiteBuilder
 
         self::write($outputDir . '/index.html', $html);
         self::write($outputDir . '/style.css', $css);
+        self::write($outputDir . '/logo.png', (string) file_get_contents($this->templatesDir . '/logo.png'));
         self::write($outputDir . '/snapshot.json', (string) file_get_contents($snapshotPath));
 
         return strlen($html) + strlen($css);

@@ -116,6 +116,10 @@ it('lists where to help: needs hands and not archived', function (): void {
     expect(array_column(page()['help'], 'id'))->toBe(['sped-nfe']);
 });
 
+it('summarizes the catalog: total, active and needing hands', function (): void {
+    expect(page()['summary'])->toBe(['total' => 7, 'active' => 3, 'help' => 1]);
+});
+
 it('explains the rules with the configured thresholds', function (): void {
     $rules = page(healthConfig([
         'windowDays' => 60,

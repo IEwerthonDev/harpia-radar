@@ -62,6 +62,11 @@ final readonly class PageBuilder
         }
 
         $generatedAt = new DateTimeImmutable($snapshot['generated_at']);
+        $help = array_values(array_filter(
+            $views,
+            static fn (array $view): bool => ($view['sustainability']['key'] ?? null) === 'needs_hands'
+                && ($view['activity']['key'] ?? null) !== 'archived',
+        ));
 
         return [
             'generated_at' => [
@@ -69,11 +74,15 @@ final readonly class PageBuilder
                 'date' => $generatedAt->setTimezone(new DateTimeZone('UTC'))->format('d/m/Y'),
             ],
             'window_days' => $windowDays,
-            'help' => array_values(array_filter(
-                $views,
-                static fn (array $view): bool => ($view['sustainability']['key'] ?? null) === 'needs_hands'
-                    && ($view['activity']['key'] ?? null) !== 'archived',
-            )),
+            'summary' => [
+                'total' => count($views),
+                'active' => count(array_filter(
+                    $views,
+                    static fn (array $view): bool => in_array($view['activity']['key'] ?? null, ['active', 'active_no_recent_release'], true),
+                )),
+                'help' => count($help),
+            ],
+            'help' => $help,
             'categories' => $categories,
             'rules' => $this->rules($config),
             'bots' => $config->botLogins,
