@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-10-28T23:43:51Z",
+    "generated_at": "2026-10-29T11:36:04Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -47,9 +47,9 @@
             "metrics": {
                 "last_commit_at": "2026-09-11",
                 "last_release_at": "2025-06-18",
-                "commits_90d": 8,
+                "commits_90d": 7,
                 "authors_90d": 4,
-                "top_author_share": 0.625,
+                "top_author_share": 0.5714,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
@@ -66,9 +66,9 @@
             "metrics": {
                 "last_commit_at": "2026-09-11",
                 "last_release_at": "2025-05-08",
-                "commits_90d": 3,
+                "commits_90d": 2,
                 "authors_90d": 2,
-                "top_author_share": 0.6667,
+                "top_author_share": 0.5,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
