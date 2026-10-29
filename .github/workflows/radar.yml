@@ -34,7 +34,7 @@ jobs:
       # já não contém os snapshots gravados depois, e o push seria recusado.
       # Com a main protegida, o push do snapshot usa uma deploy key liberada no ruleset.
       # Sem o segredo SNAPSHOT_DEPLOY_KEY, o checkout usa o GITHUB_TOKEN, como antes.
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           ref: main
           ssh-key: ${{ secrets.SNAPSHOT_DEPLOY_KEY }}
@@ -81,7 +81,7 @@ jobs:
         env:
           RADAR_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
 
@@ -90,7 +90,7 @@ jobs:
           php -S localhost:8080 -t public > /dev/null 2>&1 &
           npx --yes pa11y-ci@4 --config .pa11yci.json
 
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: public
 
@@ -116,4 +116,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
