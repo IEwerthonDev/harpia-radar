@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-10-30T11:28:00Z",
+    "generated_at": "2026-10-31T10:59:00Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -7,11 +7,11 @@
             "id": "sped-nfe",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-10-29",
+                "last_commit_at": "2026-10-30",
                 "last_release_at": "2026-10-02",
-                "commits_90d": 35,
+                "commits_90d": 39,
                 "authors_90d": 7,
-                "top_author_share": 0.6,
+                "top_author_share": 0.641,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
@@ -83,19 +83,19 @@
             "id": "nfse-php",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-10-28",
+                "last_commit_at": "2026-10-31",
                 "last_release_at": "2026-08-26",
-                "commits_90d": 6,
-                "authors_90d": 5,
-                "top_author_share": 0.3333,
+                "commits_90d": 10,
+                "authors_90d": 6,
+                "top_author_share": 0.4,
                 "bus_factor": 2,
                 "archived": false,
                 "license": "MIT",
-                "open_issues": 13
+                "open_issues": 9
             },
             "health": {
                 "activity": "active",
-                "sustainability": "insufficient_data"
+                "sustainability": "few_people"
             }
         },
         {
