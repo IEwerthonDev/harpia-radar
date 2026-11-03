@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-02T13:38:38Z",
+    "generated_at": "2026-11-03T12:52:16Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -9,13 +9,13 @@
             "metrics": {
                 "last_commit_at": "2026-10-30",
                 "last_release_at": "2026-10-02",
-                "commits_90d": 39,
-                "authors_90d": 7,
-                "top_author_share": 0.641,
+                "commits_90d": 35,
+                "authors_90d": 5,
+                "top_author_share": 0.6571,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 10
+                "open_issues": 9
             },
             "health": {
                 "activity": "active",
@@ -34,7 +34,7 @@
                 "bus_factor": 2,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 66
+                "open_issues": 64
             },
             "health": {
                 "activity": "active_no_recent_release",
@@ -47,13 +47,13 @@
             "metrics": {
                 "last_commit_at": "2026-09-11",
                 "last_release_at": "2025-06-18",
-                "commits_90d": 6,
-                "authors_90d": 3,
-                "top_author_share": 0.6667,
+                "commits_90d": 5,
+                "authors_90d": 2,
+                "top_author_share": 0.8,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 20
+                "open_issues": 18
             },
             "health": {
                 "activity": "active_no_recent_release",
@@ -72,7 +72,7 @@
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 9
+                "open_issues": 8
             },
             "health": {
                 "activity": "active_no_recent_release",
@@ -84,7 +84,7 @@
             "status": "ok",
             "metrics": {
                 "last_commit_at": "2026-11-01",
-                "last_release_at": "2026-08-26",
+                "last_release_at": "2026-11-03",
                 "commits_90d": 11,
                 "authors_90d": 7,
                 "top_author_share": 0.3636,
