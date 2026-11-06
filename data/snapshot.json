@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-05T13:19:02Z",
+    "generated_at": "2026-11-06T13:02:11Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -7,15 +7,15 @@
             "id": "sped-nfe",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-11-04",
+                "last_commit_at": "2026-11-05",
                 "last_release_at": "2026-10-02",
-                "commits_90d": 44,
-                "authors_90d": 6,
-                "top_author_share": 0.6364,
+                "commits_90d": 48,
+                "authors_90d": 7,
+                "top_author_share": 0.625,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 15
+                "open_issues": 16
             },
             "health": {
                 "activity": "active",
@@ -45,15 +45,15 @@
             "id": "sped-cte",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-09-11",
+                "last_commit_at": "2026-11-05",
                 "last_release_at": "2025-06-18",
-                "commits_90d": 5,
-                "authors_90d": 2,
-                "top_author_share": 0.8,
+                "commits_90d": 7,
+                "authors_90d": 3,
+                "top_author_share": 0.7143,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 18
+                "open_issues": 17
             },
             "health": {
                 "activity": "active_no_recent_release",
