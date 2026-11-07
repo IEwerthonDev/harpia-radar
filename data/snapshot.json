@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-06T13:02:11Z",
+    "generated_at": "2026-11-07T11:48:29Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -83,15 +83,15 @@
             "id": "nfse-php",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-11-01",
+                "last_commit_at": "2026-11-06",
                 "last_release_at": "2026-11-03",
-                "commits_90d": 11,
-                "authors_90d": 7,
-                "top_author_share": 0.3636,
+                "commits_90d": 12,
+                "authors_90d": 8,
+                "top_author_share": 0.3333,
                 "bus_factor": 2,
                 "archived": false,
                 "license": "MIT",
-                "open_issues": 9
+                "open_issues": 7
             },
             "health": {
                 "activity": "active",
@@ -121,18 +121,18 @@
             "id": "openboleto",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-02-13",
+                "last_commit_at": "2026-11-06",
                 "last_release_at": "2025-03-14",
-                "commits_90d": 0,
-                "authors_90d": 0,
-                "top_author_share": null,
-                "bus_factor": null,
+                "commits_90d": 1,
+                "authors_90d": 1,
+                "top_author_share": 1.0,
+                "bus_factor": 1,
                 "archived": false,
                 "license": null,
                 "open_issues": 38
             },
             "health": {
-                "activity": "no_recent_changes",
+                "activity": "active_no_recent_release",
                 "sustainability": "insufficient_data"
             }
         },
