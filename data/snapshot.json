@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-09T14:01:35Z",
+    "generated_at": "2026-11-10T13:35:49Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -34,7 +34,7 @@
                 "bus_factor": 2,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 65
+                "open_issues": 66
             },
             "health": {
                 "activity": "active_no_recent_release",
