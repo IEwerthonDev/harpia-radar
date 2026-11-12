@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-11T12:48:21Z",
+    "generated_at": "2026-11-12T13:51:13Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -15,7 +15,7 @@
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 17
+                "open_issues": 18
             },
             "health": {
                 "activity": "active",
@@ -34,7 +34,7 @@
                 "bus_factor": 2,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 66
+                "open_issues": 67
             },
             "health": {
                 "activity": "active_no_recent_release",
@@ -72,7 +72,7 @@
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 8
+                "open_issues": 9
             },
             "health": {
                 "activity": "active_no_recent_release",
