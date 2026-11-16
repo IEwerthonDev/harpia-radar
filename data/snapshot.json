@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-15T12:49:48Z",
+    "generated_at": "2026-11-16T13:46:55Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -27,7 +27,7 @@
             "status": "ok",
             "metrics": {
                 "last_commit_at": "2026-10-26",
-                "last_release_at": "2024-05-07",
+                "last_release_at": "2026-10-26",
                 "commits_90d": 21,
                 "authors_90d": 7,
                 "top_author_share": 0.3333,
@@ -37,7 +37,7 @@
                 "open_issues": 67
             },
             "health": {
-                "activity": "active_no_recent_release",
+                "activity": "active",
                 "sustainability": "few_people"
             }
         },
@@ -161,16 +161,16 @@
             "metrics": {
                 "last_commit_at": "2026-08-18",
                 "last_release_at": null,
-                "commits_90d": 2,
-                "authors_90d": 2,
-                "top_author_share": 0.5,
-                "bus_factor": 1,
+                "commits_90d": 0,
+                "authors_90d": 0,
+                "top_author_share": null,
+                "bus_factor": null,
                 "archived": false,
                 "license": "CC0-1.0",
                 "open_issues": 13
             },
             "health": {
-                "activity": "active_no_recent_release",
+                "activity": "no_recent_changes",
                 "sustainability": "insufficient_data"
             }
         }
