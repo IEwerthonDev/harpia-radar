@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-17T14:38:50Z",
+    "generated_at": "2026-11-18T14:16:05Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -9,9 +9,9 @@
             "metrics": {
                 "last_commit_at": "2026-11-13",
                 "last_release_at": "2026-11-13",
-                "commits_90d": 57,
-                "authors_90d": 7,
-                "top_author_share": 0.614,
+                "commits_90d": 55,
+                "authors_90d": 6,
+                "top_author_share": 0.6364,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
@@ -26,15 +26,15 @@
             "id": "sped-da",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-10-26",
+                "last_commit_at": "2026-11-17",
                 "last_release_at": "2026-10-26",
-                "commits_90d": 21,
-                "authors_90d": 7,
+                "commits_90d": 24,
+                "authors_90d": 8,
                 "top_author_share": 0.3333,
                 "bus_factor": 2,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 67
+                "open_issues": 68
             },
             "health": {
                 "activity": "active",
@@ -53,7 +53,7 @@
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 18
+                "open_issues": 21
             },
             "health": {
                 "activity": "active_no_recent_release",
