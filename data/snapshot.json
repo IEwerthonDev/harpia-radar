@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-20T14:08:19Z",
+    "generated_at": "2026-11-21T13:33:46Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -34,7 +34,7 @@
                 "bus_factor": 2,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 68
+                "open_issues": 70
             },
             "health": {
                 "activity": "active",
@@ -53,7 +53,7 @@
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 21
+                "open_issues": 22
             },
             "health": {
                 "activity": "active_no_recent_release",
@@ -72,7 +72,7 @@
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 9
+                "open_issues": 10
             },
             "health": {
                 "activity": "active_no_recent_release",
@@ -83,11 +83,11 @@
             "id": "nfse-php",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-11-17",
+                "last_commit_at": "2026-11-20",
                 "last_release_at": "2026-11-13",
-                "commits_90d": 16,
+                "commits_90d": 17,
                 "authors_90d": 10,
-                "top_author_share": 0.25,
+                "top_author_share": 0.2941,
                 "bus_factor": 3,
                 "archived": false,
                 "license": "MIT",
