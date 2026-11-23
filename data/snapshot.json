@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-22T13:26:43Z",
+    "generated_at": "2026-11-23T16:09:05Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -9,9 +9,9 @@
             "metrics": {
                 "last_commit_at": "2026-11-13",
                 "last_release_at": "2026-11-13",
-                "commits_90d": 55,
+                "commits_90d": 53,
                 "authors_90d": 6,
-                "top_author_share": 0.6364,
+                "top_author_share": 0.6604,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
@@ -34,7 +34,7 @@
                 "bus_factor": 2,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 70
+                "open_issues": 71
             },
             "health": {
                 "activity": "active",
@@ -84,10 +84,10 @@
             "status": "ok",
             "metrics": {
                 "last_commit_at": "2026-11-20",
-                "last_release_at": "2026-11-13",
-                "commits_90d": 17,
+                "last_release_at": "2026-11-22",
+                "commits_90d": 16,
                 "authors_90d": 10,
-                "top_author_share": 0.2941,
+                "top_author_share": 0.3125,
                 "bus_factor": 3,
                 "archived": false,
                 "license": "MIT",
