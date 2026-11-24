@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-23T16:09:05Z",
+    "generated_at": "2026-11-24T15:58:32Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -7,15 +7,15 @@
             "id": "sped-nfe",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-11-13",
+                "last_commit_at": "2026-11-23",
                 "last_release_at": "2026-11-13",
-                "commits_90d": 53,
+                "commits_90d": 59,
                 "authors_90d": 6,
-                "top_author_share": 0.6604,
+                "top_author_share": 0.6949,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 16
+                "open_issues": 14
             },
             "health": {
                 "activity": "active",
@@ -26,19 +26,19 @@
             "id": "sped-da",
             "status": "ok",
             "metrics": {
-                "last_commit_at": "2026-11-17",
+                "last_commit_at": "2026-11-24",
                 "last_release_at": "2026-10-26",
-                "commits_90d": 24,
-                "authors_90d": 8,
-                "top_author_share": 0.3333,
-                "bus_factor": 2,
+                "commits_90d": 35,
+                "authors_90d": 11,
+                "top_author_share": 0.2857,
+                "bus_factor": 3,
                 "archived": false,
                 "license": "NOASSERTION",
-                "open_issues": 71
+                "open_issues": 72
             },
             "health": {
                 "activity": "active",
-                "sustainability": "few_people"
+                "sustainability": "well_distributed"
             }
         },
         {
@@ -47,9 +47,9 @@
             "metrics": {
                 "last_commit_at": "2026-11-05",
                 "last_release_at": "2025-06-18",
-                "commits_90d": 7,
-                "authors_90d": 3,
-                "top_author_share": 0.7143,
+                "commits_90d": 6,
+                "authors_90d": 2,
+                "top_author_share": 0.8333,
                 "bus_factor": 1,
                 "archived": false,
                 "license": "NOASSERTION",
@@ -85,13 +85,13 @@
             "metrics": {
                 "last_commit_at": "2026-11-20",
                 "last_release_at": "2026-11-22",
-                "commits_90d": 16,
-                "authors_90d": 10,
-                "top_author_share": 0.3125,
+                "commits_90d": 15,
+                "authors_90d": 9,
+                "top_author_share": 0.3333,
                 "bus_factor": 3,
                 "archived": false,
                 "license": "MIT",
-                "open_issues": 5
+                "open_issues": 6
             },
             "health": {
                 "activity": "active",
