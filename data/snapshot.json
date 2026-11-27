@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-26T15:27:07Z",
+    "generated_at": "2026-11-27T15:17:04Z",
     "schema_version": 1,
     "window_days": 90,
     "projects": [
@@ -91,7 +91,7 @@
                 "bus_factor": 3,
                 "archived": false,
                 "license": "MIT",
-                "open_issues": 6
+                "open_issues": 5
             },
             "health": {
                 "activity": "active",
